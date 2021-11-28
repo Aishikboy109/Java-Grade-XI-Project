@@ -1,73 +1,68 @@
 import java.util.Scanner;
-
-/**
- * Q11
- */
 public class Q11 {
+    //Merging two arrays
 
+    static Scanner sc = new Scanner(System.in);
+    static int arr1[], arr2[];
+    static int newArray[];
     public static void main(String[] args) {
+        inputArrLength();
+        inputElements();
+        displayOriginal();
+        mergeArrays();
+        displayNewArray();
+    }
 
-
-        //Inputting for user
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of arrays : ");
-        int noOfArrays = sc.nextInt();
-        int listOfArrays[][] = new int[noOfArrays][];
-        for (int i = 0; i < noOfArrays; i++) {
-            System.out.println("Enter the size of array " + (i + 1) + " : ");
-            int sizeOfArray = sc.nextInt();
-            listOfArrays[i] = new int[sizeOfArray];
-            System.out.println("Enter the elements of array " + (i + 1) + " : ");
-            for (int j = 0; j < sizeOfArray; j++) {
-                listOfArrays[i][j] = sc.nextInt();
-            }
+    static void inputArrLength(){
+        System.out.println("Enter the Length of Array 1 : ");
+        int arr1Length = sc.nextInt();
+        System.out.println("Enter the Length of Array 2 : ");
+        int arr2Length = sc.nextInt();
+        arr1 = new int[arr1Length];
+        arr2 = new int[arr2Length];
+    }
+    static void inputElements(){
+        System.out.println("Enter the elements of Array 1 : ");
+        for (int i = 0; i < arr1.length; i++) {
+            arr1[i] = sc.nextInt();
         }
+        System.out.println("Enter the elements of Array 2 : ");
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = sc.nextInt();
+        }
+    }
+    
+    static void displayOriginal(){
+        // System.out.println("Original Arrays : ");
+        System.out.print("Array 1 : ");
+        for (int i = 0; i < arr1.length; i++) {
+            System.out.print(arr1[i] + " ");
+        }
+        System.out.println();
+        System.out.print("Array 2 : ");
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.print(arr2[i] + " ");
+        }
+        System.out.println();
+    }
 
-        //Printing the arrays
-        displayOriginal(listOfArrays);
-
-
-        System.out.println("Total length : " + getTotatlLength(listOfArrays));
-
-
-        //Creating the new array in which the original arrays will be merged
-        int newArray[] = new int[getTotatlLength(listOfArrays)];
-        //Merging the arrays
+    static void mergeArrays(){
+        int newarr[] = new int[arr1.length + arr2.length];
         int c = 0;
-        for (int i = 0; i < listOfArrays.length; i++) {
-            for (int j = 0; j < listOfArrays[i].length; j++) {
-                newArray[c++] = listOfArrays[i][j];
-                c++;
-            }
+        for (int i = 0; i < arr1.length; i++) {
+            newarr[c++] = arr1[i];
         }
-
-        //Printing the new array
-        displayNewArray(newArray);
+        for (int i = 0; i < arr2.length; i++) {
+            newarr[c++] = arr2[i];
+        }
+        newArray = newarr;
     }
 
-    static void displayNewArray(int[] newArray) {
-        System.out.print("New Array : ");
+    static void displayNewArray(){
+        System.out.print("Merged Array : ");
         for (int i = 0; i < newArray.length; i++) {
-            System.out.print(newArray[i] + " ");
+            System.out.print(newArray[i] + ", ");
         }
-    }
-
-    static void displayOriginal(int[][] listOfArrays){
-        for (int i = 0; i < listOfArrays.length; i++) {
-            System.out.println("Array : " + i);
-            for (int j = 0; j < listOfArrays[i].length; j++) {
-                System.out.print(listOfArrays[i][j] + ", ");
-            }
-            System.out.println();
-        }
-    }
-    static int getTotatlLength(int[][] listOfArrays) {
-        int totalLength = 0;
-        for (int i = 0; i < listOfArrays.length; i++) {
-            for (int j = 0; j < listOfArrays[i].length; j++) {
-                totalLength++;
-            }
-        }
-        return totalLength;
+        System.out.println();
     }
 }

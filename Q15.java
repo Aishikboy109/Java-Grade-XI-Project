@@ -1,9 +1,7 @@
 import java.util.Scanner;
 public class Q15  {
-
     //Java program to check for Keith Number
    public static void main(String[] args) { 
-
      Scanner sc = new Scanner( System.in ); 
      System.out.print("Input a number: "); 
      int n = sc.nextInt(); 
@@ -12,16 +10,17 @@ public class Q15  {
      int d=s.length();
      int arr[]=new int[n];
      int i, sum; 
-     for(i=d-1; i>=0; i--)
-     {
+     for(i=d-1; i>=0; i--){
          arr[i]=n1 % 10;
-         n1=n1/10;
-          
+         n1=n1/10; 
+     }  
+     System.out.println("nod : " + d);
+     for (int j = 0; j < arr.length; j++) {
+         System.out.print(arr[j] + ", ");
      }
-      
+     System.out.println();
      i=d; sum=0;
-     while(sum<n)
-     {
+     while(sum<n){
          sum = 0;
          for(int j=1; j<=d; j++)
          {
@@ -30,7 +29,6 @@ public class Q15  {
          arr[i]=sum;
          i++;
      }
- 
     if(sum==n)
         System.out.println("Keith Number");
      else
